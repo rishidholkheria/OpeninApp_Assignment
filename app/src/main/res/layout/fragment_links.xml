@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
+    android:nestedScrollingEnabled="true"
+
     android:scrollbars="none">
 
     <RelativeLayout
@@ -18,9 +20,9 @@
             android:id="@+id/dashboardHead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="60dp"
-            android:layout_marginHorizontal="16dp"
             android:orientation="horizontal">
 
             <TextView
@@ -46,9 +48,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/border_curved_top"
             android:layout_marginTop="110dp"
+            android:background="@drawable/border_curved_top"
             android:gravity="center"
+            android:paddingBottom="90dp"
             android:orientation="vertical">
 
 
@@ -58,8 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:paddingHorizontal="16dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
 
                 <TextView
                     android:id="@+id/greeting"
@@ -90,12 +93,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/usernameHead"
-                android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/border_curved"
                 android:orientation="vertical"
                 android:paddingHorizontal="15dp"
-                android:paddingVertical="25dp">
+                android:paddingVertical="10dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -143,8 +146,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/graph_layout"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:scrollbars="none">
 
@@ -286,10 +289,11 @@
 
 
             <RelativeLayout
-                android:layout_width="328dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
                 android:layout_below="@id/hScrollTabs"
                 android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="15sp"
                 android:background="@drawable/outline_curved_grey_two">
 
@@ -299,7 +303,6 @@
                     android:layout_centerInParent="true"
                     android:layout_toLeftOf="@+id/txt_viewAnalytics"
                     android:src="@drawable/ic_arrows" />
-
 
                 <TextView
                     android:id="@+id/txt_viewAnalytics"
@@ -356,16 +359,83 @@
                 android:id="@+id/progress_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Loading..."
                 android:fontFamily="@font/figtree_semibold"
-                android:textSize="16sp"/>
+                android:text="Loading..."
+                android:textSize="16sp" />
 
             <ListView
                 android:id="@+id/linksListView"
-                android:visibility="gone"
-                android:layout_marginHorizontal="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"/>
+                android:layout_height="1000dp"
+                android:layout_weight="1"
+                android:layout_gravity="top"
+                android:layout_marginHorizontal="20dp"
+                android:divider="#00000000"
+                android:dividerHeight="10dp"
+                android:visibility="gone" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_below="@id/hScrollTabs"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="15sp"
+                android:background="@drawable/outline_curved_grey_two">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/txt_viewlinks"
+                    android:src="@drawable/ic_viewlinks" />
+
+
+                <TextView
+                    android:id="@+id/txt_viewlinks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/figtree_semibold"
+                    android:paddingStart="12dp"
+                    android:text="View all Links"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_below="@id/txt_viewlinks"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="15sp"
+                android:background="@drawable/whatsapp_btn_layout">
+
+                <ImageView
+                    android:id="@+id/icon_whatsapp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="5dp"
+                    android:src="@drawable/ic_viewlinks" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/figtree_semibold"
+                    android:paddingStart="10dp"
+                    android:text="Talk with us"
+                    android:textColor="@color/black"
+                    android:layout_toEndOf="@+id/icon_whatsapp"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 

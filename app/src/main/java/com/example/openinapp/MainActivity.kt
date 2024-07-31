@@ -20,5 +20,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.bottomNavigationView.background = null
+        binding.bottomNavigationView.setBackgroundColor(resources.getColor(R.color.white))
+        binding.bottomNavigationView.itemIconTintList = resources.getColorStateList(R.color.black)
+        binding.bottomNavigationView.itemTextColor = resources.getColorStateList(R.color.black)
+
     }
 }

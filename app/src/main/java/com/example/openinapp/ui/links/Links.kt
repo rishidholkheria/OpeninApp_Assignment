@@ -1,14 +1,9 @@
 package com.example.openinapp.ui.links
 
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -22,9 +17,9 @@ import com.example.openinapp.model.Link
 import com.example.openinapp.model.LinksResponse
 import com.example.openinapp.network.NetworkResult
 import com.example.openinapp.repository.LinksRepository
+import com.example.openinapp.utils.HelperFunctions
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -44,43 +39,47 @@ class Links : Fragment() {
     private lateinit var recentLinksItemList: ArrayList<Link>
 
 
-    val months = listOf(
+    private val months = listOf(
         "Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     )
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentLinksBinding.inflate(inflater, container, false)
+
+        val linkService = RetrofitHelper.getInstance().create(LinksAPI::class.java)
+        val repo = LinksRepository(linkService)
+        linksViewModel = ViewModelProvider(this,LinkViewModelFactory(repo)).get(LinksViewModel::class.java)
+        bindObservers()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val linkService = RetrofitHelper.getInstance().create(LinksAPI::class.java)
-        val repo = LinksRepository(linkService)
-
-        linksViewModel = ViewModelProvider(this,LinkViewModelFactory(repo)).get(LinksViewModel::class.java)
-        bindObservers()
-
         binding.recentLinks.setOnClickListener{
+            binding.recentLinks.setBackgroundResource(R.drawable.blue_btn)
+            binding.recentLinks.setTextColor(resources.getColor(R.color.white))
+            binding.topLinks.setTextColor(resources.getColor(R.color.text_grey))
+
+            binding.topLinks.background = null
             val adapter = CustomAdapter(requireContext(), recentLinksItemList)
             binding.linksListView.adapter = adapter
-//            var topLinksAdapter = ArrayAdapter(requireContext(), R.layout.list_item, topLinksItemList)
-//            var recentLinksAdapter = ArrayAdapter(requireContext(), R.layout.list_item, recentLinksItemList)
         }
 
         binding.topLinks.setOnClickListener{
+            binding.topLinks.setBackgroundResource(R.drawable.blue_btn)
+            binding.topLinks.setTextColor(resources.getColor(R.color.white))
+            binding.recentLinks.setTextColor(resources.getColor(R.color.text_grey))
+
+            binding.recentLinks.background = null
             val adapter = CustomAdapter(requireContext(), topLinksItemList)
             binding.linksListView.isVisible = true
             binding.linksListView.adapter = adapter
-//            var topLinksAdapter = ArrayAdapter(requireContext(), R.layout.list_item, topLinksItemList)
-//            var recentLinksAdapter = ArrayAdapter(requireContext(), R.layout.list_item, recentLinksItemList)
         }
 
         binding.greeting.text = getGreetingMessage()
@@ -104,17 +103,27 @@ class Links : Fragment() {
             when (it) {
                 is NetworkResult.Success<*> -> {
                         binding.todaysClicks.text = it.data!!.today_clicks.toString()
-                        binding.location.text = it.data.top_location
-                        binding.topSource.text = it.data.top_source
+                        binding.location.text = HelperFunctions.handleEmptyData(it.data.top_location)
+                        binding.topSource.text = HelperFunctions.handleEmptyData(it.data.top_source)
 
-                        val monthClicksMap = aggregateClicksByMonth(it.data)
+                        val monthClicksMap = aggregateClicksByMonth(it?.data)
                         val entries = convertToChartData(monthClicksMap)
 
                         val lineChart: LineChart = binding.lineChart
                         setupLineChart(lineChart, entries)
 
+
                     topLinksItemList = ArrayList(it.data.data.top_links)
                     recentLinksItemList = ArrayList(it.data.data.recent_links)
+
+                    binding.topLinks.setBackgroundResource(R.drawable.blue_btn)
+                    binding.topLinks.setTextColor(resources.getColor(R.color.white))
+                    binding.recentLinks.setTextColor(resources.getColor(R.color.text_grey))
+
+                    binding.recentLinks.background = null
+                    val adapter = CustomAdapter(requireContext(), topLinksItemList)
+                    binding.linksListView.isVisible = true
+                    binding.linksListView.adapter = adapter
                 }
 
                 is NetworkResult.Error<*> -> {
@@ -188,7 +197,6 @@ class Links : Fragment() {
 
         lineChart.axisRight.isEnabled = false
         lineChart.axisLeft.granularity = 1f
-//        lineChart.setVisibleXRangeMaximum(10F)
         lineChart.invalidate()
     }
     override fun onDestroyView() {
