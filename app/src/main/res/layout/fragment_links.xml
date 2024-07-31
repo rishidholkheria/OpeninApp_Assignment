@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/bg_color"
     android:nestedScrollingEnabled="true"
-
     android:scrollbars="none">
 
     <RelativeLayout
@@ -20,9 +19,8 @@
             android:id="@+id/dashboardHead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
             <TextView
@@ -48,7 +46,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="90dp"
             android:background="@drawable/border_curved_top"
             android:gravity="center"
             android:paddingBottom="90dp"
@@ -70,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/figtree_regular"
                     android:text="Good Morning"
+                    android:textColor="@color/text_grey"
                     android:textSize="16sp" />
 
                 <TextView
@@ -419,8 +418,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:paddingStart="5dp"
-                    android:src="@drawable/ic_viewlinks" />
+                    android:paddingStart="10dp"
+                    android:src="@drawable/ic_whatsapp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -431,6 +430,36 @@
                     android:text="Talk with us"
                     android:textColor="@color/black"
                     android:layout_toEndOf="@+id/icon_whatsapp"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_below="@id/txt_viewlinks"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="15sp"
+                android:background="@drawable/faq_btn_layout">
+
+                <ImageView
+                    android:id="@+id/icon_faq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="10dp"
+                    android:src="@drawable/ic_faq" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/figtree_semibold"
+                    android:paddingStart="10dp"
+                    android:text="Frequently Asked Questions"
+                    android:textColor="@color/black"
+                    android:layout_toEndOf="@+id/icon_faq"
                     android:textSize="16sp" />
 
 
