@@ -5,5 +5,6 @@
     <color name="blue">#0E6FFF</color>
     <color name="bg_color">#F5F5F5</color>
     <color name="text_grey">#999CA0</color>
+    <color name="graph_lines">#F2F2F2</color>
 
 </resources>

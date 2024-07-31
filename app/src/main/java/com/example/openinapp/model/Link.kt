@@ -1,6 +1,6 @@
 package com.example.openinapp.model
 
-data class RecentLink(
+data class Link(
     val app: String,
     val created_at: String,
     val domain_id: String,
@@ -12,7 +12,7 @@ data class RecentLink(
     val title: String,
     val total_clicks: Int,
     val url_id: Int,
-    val url_prefix: Any,
+    val url_prefix: String,
     val url_suffix: String,
     val web_link: String
 )

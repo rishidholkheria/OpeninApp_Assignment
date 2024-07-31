@@ -77,5 +77,7 @@ dependencies {
     //Loader Library
 //    implementation ("com.github.ybq:Android-SpinKit:1.4.0")
 
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
 
 }

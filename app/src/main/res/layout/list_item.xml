@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="116dp"
+    android:paddingVertical="4dp"
+    android:background="@drawable/image_curve"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/linkImg"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/image_curve"
+            android:src="@drawable/ic_amazon" />
+
+        <TextView
+            android:id="@+id/linkName"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/linkImg"
+            android:ellipsize="end"
+            android:fontFamily="@font/figtree_regular"
+            android:maxLines="1"
+            android:padding="2dp"
+            android:text="Sample link name..."
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/linkDate"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linkName"
+            android:layout_toRightOf="@id/linkImg"
+            android:fontFamily="@font/figtree_regular"
+            android:padding="2dp"
+            android:text="Sample link name..."
+            android:textColor="@color/text_grey"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/clickedNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/figtree_semibold"
+            android:padding="2dp"
+            android:text="2343"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txt_clicks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/clickedNumber"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/figtree_regular"
+            android:padding="2dp"
+            android:text="Clicks"
+            android:textColor="@color/text_grey"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/dash_border"
+        android:paddingHorizontal="12dp">
+
+        <TextView
+            android:id="@+id/link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableEnd="@drawable/ic_clipboard"
+            android:ellipsize="end"
+            android:fontFamily="@font/figtree_regular"
+            android:maxLines="1"
+            android:padding="2dp"
+            android:text="https://samplelink.oia.bio/ashd..."
+            android:textColor="@color/blue"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
