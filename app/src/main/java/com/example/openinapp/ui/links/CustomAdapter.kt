@@ -10,9 +10,11 @@ import com.example.openinapp.databinding.ListItemBinding
 import com.example.openinapp.model.Link
 import com.example.openinapp.utils.HelperFunctions
 
-class CustomAdapter(private val context: Context, private val dataSource: List<Link>) : BaseAdapter() {
+class CustomAdapter(private val context: Context, private val dataSource: List<Link>) :
+    BaseAdapter() {
 
-    private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private val inflater: LayoutInflater =
+        context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
         return dataSource.size
@@ -41,6 +43,11 @@ class CustomAdapter(private val context: Context, private val dataSource: List<L
         binding.linkDate.text = HelperFunctions.getDate(listItem.created_at)
         binding.link.text = listItem.web_link
         binding.clickedNumber.text = listItem.total_clicks.toString()
+
+//        Copy to clipboard functionality
+        binding.link.setOnClickListener {
+            HelperFunctions.copyToClipboard(context, "Links", listItem.web_link)
+        }
 
         return binding.root
     }

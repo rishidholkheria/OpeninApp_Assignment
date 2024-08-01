@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
@@ -20,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -39,6 +37,7 @@
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
+                android:clickable="true"
                 android:src="@drawable/ic_setting" />
 
         </RelativeLayout>
@@ -46,11 +45,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="82dp"
             android:background="@drawable/border_curved_top"
             android:gravity="center"
-            android:paddingBottom="90dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="105dp">
 
 
             <!--            Username-->
@@ -128,13 +127,19 @@
 
                 </RelativeLayout>
 
-
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/line_chart"
-                    android:layout_width="500dp"
-                    android:layout_height="200dp"
+                    android:layout_width="600dp"
+                    android:layout_height="300dp" />
 
-                    />
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/graphLoader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="30dp"
+                    android:indeterminate="true" />
+
 
             </LinearLayout>
 
@@ -170,9 +175,19 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
                                 android:src="@drawable/ic_todays_clicks" />
+
+                            <TextView
+                                android:id="@+id/text_loader"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:fontFamily="@font/figtree_regular"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/todays_clicks"
@@ -180,7 +195,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
                                 android:fontFamily="@font/figtree_semibold"
-                                android:text="123"
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -212,9 +227,19 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
                                 android:src="@drawable/ic_location" />
+
+                            <TextView
+                                android:id="@+id/text_loader2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:fontFamily="@font/figtree_italic"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/location"
@@ -222,7 +247,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="15dp"
                                 android:fontFamily="@font/figtree_semibold"
-                                android:text="Ahamedabad"
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="16sp" />
 
@@ -254,8 +279,8 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
                                 android:src="@drawable/ic_instagram" />
 
                             <TextView
@@ -289,11 +314,11 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="48dp"
                 android:layout_below="@id/hScrollTabs"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="15sp"
+                android:layout_marginVertical="20dp"
                 android:background="@drawable/outline_curved_grey_two">
 
                 <ImageView
@@ -353,22 +378,21 @@
 
             </RelativeLayout>
 
-
-            <TextView
+            <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/progress_bar"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/figtree_semibold"
-                android:text="Loading..."
-                android:textSize="16sp" />
+
+                android:layout_margin="30dp"
+                android:indeterminate="true" />
 
             <ListView
                 android:id="@+id/linksListView"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
-                android:layout_weight="1"
+                android:layout_height="700dp"
                 android:layout_gravity="top"
                 android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
                 android:divider="#00000000"
                 android:dividerHeight="10dp"
                 android:visibility="gone" />
@@ -380,7 +404,7 @@
                 android:layout_below="@id/hScrollTabs"
                 android:layout_centerHorizontal="true"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="15sp"
+                android:layout_marginBottom="25dp"
                 android:background="@drawable/outline_curved_grey_two">
 
                 <ImageView
@@ -410,7 +434,7 @@
                 android:layout_height="64dp"
                 android:layout_below="@id/txt_viewlinks"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginVertical="15sp"
+                android:layout_marginVertical="15dp"
                 android:background="@drawable/whatsapp_btn_layout">
 
                 <ImageView
@@ -425,11 +449,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/icon_whatsapp"
                     android:fontFamily="@font/figtree_semibold"
                     android:paddingStart="10dp"
                     android:text="Talk with us"
                     android:textColor="@color/black"
-                    android:layout_toEndOf="@+id/icon_whatsapp"
                     android:textSize="16sp" />
 
 
@@ -440,7 +464,6 @@
                 android:layout_height="64dp"
                 android:layout_below="@id/txt_viewlinks"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="15sp"
                 android:background="@drawable/faq_btn_layout">
 
                 <ImageView
@@ -455,11 +478,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/icon_faq"
                     android:fontFamily="@font/figtree_semibold"
                     android:paddingStart="10dp"
                     android:text="Frequently Asked Questions"
                     android:textColor="@color/black"
-                    android:layout_toEndOf="@+id/icon_faq"
                     android:textSize="16sp" />
 
 

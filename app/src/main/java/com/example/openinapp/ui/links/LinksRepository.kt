@@ -1,6 +1,5 @@
-package com.example.openinapp.repository
+package com.example.openinapp.ui.links
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.openinapp.api.LinksAPI
@@ -18,7 +17,6 @@ class LinksRepository(private val linksAPI: LinksAPI) {
         val response = linksAPI.getLinksData()
         handleResponse(response)
     }
-
     private fun handleResponse(response: Response<LinksResponse>) {
         if(response.isSuccessful && response.body()?.data != null){
             _linksLiveData.postValue(NetworkResult.Success(response.body()!!))

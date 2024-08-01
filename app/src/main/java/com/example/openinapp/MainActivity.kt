@@ -1,15 +1,12 @@
 package com.example.openinapp
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import com.example.openinapp.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,9 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.bottomNavigationView.background = null
-        binding.bottomNavigationView.setBackgroundColor(resources.getColor(R.color.white))
-        binding.bottomNavigationView.itemIconTintList = resources.getColorStateList(R.color.black)
-        binding.bottomNavigationView.itemTextColor = resources.getColorStateList(R.color.black)
+        binding.bottomNavigationView.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+        binding.fab.drawable.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
 
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="154dp"
+    android:layout_height="130dp"
     android:layout_marginVertical="5dp"
     android:background="@drawable/image_curve"
     android:orientation="vertical">
@@ -15,26 +15,28 @@
             android:id="@+id/linkImg"
             android:layout_width="65dp"
             android:layout_height="65dp"
+            android:layout_marginEnd="5dp"
             android:scaleType="centerCrop"
             android:background="@drawable/image_curve"
             android:src="@drawable/ic_amazon" />
 
         <TextView
             android:id="@+id/linkName"
-            android:layout_width="130dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/linkImg"
+            android:layout_toEndOf="@id/linkImg"
             android:ellipsize="end"
             android:fontFamily="@font/figtree_regular"
             android:maxLines="1"
             android:padding="2dp"
             android:text=""
+            android:layout_marginTop="5dp"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/linkDate"
-            android:layout_width="128dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/linkName"
             android:layout_toRightOf="@id/linkImg"
@@ -72,13 +74,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/dash_border"
-        android:paddingHorizontal="12dp">
+        android:padding="7dp"
+        android:background="@drawable/dash_border">
 
         <TextView
             android:id="@+id/link"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:drawableEnd="@drawable/ic_clipboard"
             android:ellipsize="end"
